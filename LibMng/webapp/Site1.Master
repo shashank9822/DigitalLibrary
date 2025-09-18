@@ -1,0 +1,337 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="webapp.Site1" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><asp:ContentPlaceHolder ID="TitleContent" runat="server">Digital Library</asp:ContentPlaceHolder></title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="Bootstrap/CSS/bootstrap.min.css" rel="stylesheet" />
+    
+    <!-- DataTables CSS -->
+    <link href="Database/CSS/jquery.dataTables.min.css" rel="stylesheet" />
+    
+    <!-- Font Awesome -->
+    <link href="Fontawesome/css/all.css" rel="stylesheet" />
+    
+    <!-- Custom Styles -->
+    <link href="CSS/CustomStylesheet.css" rel="stylesheet" />
+    
+    <!-- jQuery FIRST -->
+    <script src="Jq/jquery3.7.1.js"></script>
+    
+    <!-- Bootstrap Bundle -->
+    <script src="Bootstrap/JS/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery Validation -->
+    <script src="Jq/jquery.validate.min.js"></script>
+    <script src="Jq/jquery.validate.unobtrusive.js"></script>
+    
+    <!-- DataTables -->
+    <script src="Database/Js/jquery.dataTables.min.js"></script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <!-- Header Navigation -->
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+                <div class="container">
+                    <a class="navbar-brand d-flex align-items-center" href="homepage.aspx">
+                        <img src="imgs/bo.png" height="60" class="me-2" alt="Library Logo" />
+                    </a>
+                    
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+                            data-bs-target="#navbarNav" aria-controls="navbarNav" 
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav me-auto">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="homepage.aspx">
+                                    <i class="fas fa-home me-1"></i>Home
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <i class="fas fa-info-circle me-1"></i>About Us
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    <i class="fas fa-file-contract me-1"></i>Terms
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" 
+                                   role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-concierge-bell me-1"></i>Services
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
+                                    <li><a class="dropdown-item" href="#">Book Catalog</a></li>
+                                    <li><a class="dropdown-item" href="#">Research Help</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#">Events</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <asp:LinkButton class="nav-link" ID="LinkButton6" runat="server" OnClick="LinkButton6_Click">
+                                    <i class="fas fa-book me-1"></i>View Books
+                                </asp:LinkButton>
+                            </li>
+                            <li class="nav-item">
+                                <asp:LinkButton class="nav-link" ID="LinkButton7" runat="server" OnClick="LinkButton7_Click">
+                                    <i class="fas fa-sign-in-alt me-1"></i>User Login
+                                </asp:LinkButton>
+                            </li>
+                            <li class="nav-item">
+                                <asp:LinkButton class="nav-link" ID="LinkButton8" runat="server" OnClick="LinkButton8_Click">
+                                    <i class="fas fa-user-plus me-1"></i>Sign Up
+                                </asp:LinkButton>
+                            </li>
+                            <li class="nav-item">
+                                <asp:LinkButton class="nav-link" ID="LinkButton9" runat="server" Visible="False" OnClick="LinkButton9_Click">
+                                    <i class="fas fa-sign-out-alt me-1"></i>Logout
+                                </asp:LinkButton>
+                            </li>
+                            <li class="nav-item">
+                                <asp:LinkButton class="nav-link" ID="LinkButton10" runat="server" OnClick="LinkButton10_Click" Visible="False">
+                                    <i class="fas fa-user me-1"></i>Hello User
+                                </asp:LinkButton>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder" runat="server">
+            </asp:ContentPlaceHolder>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer mt-auto">
+            <div class="footer-top bg-dark py-4">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <div class="footer-links">
+                                <asp:LinkButton class="btn btn-link text-light me-3" ID="LinkButton11" runat="server" OnClick="LinkButton11_Click">
+                                    <i class="fas fa-lock me-1"></i>Admin Login
+                                </asp:LinkButton>
+                                
+                                <asp:LinkButton class="btn btn-link text-light me-3" ID="LinkButton12" runat="server" OnClick="LinkButton12_Click" Visible="False">
+                                    <i class="fas fa-user-edit me-1"></i>Author Management
+                                </asp:LinkButton>
+                                
+                                <asp:LinkButton class="btn btn-link text-light me-3" ID="LinkButton13" runat="server" OnClick="LinkButton13_Click" Visible="False">
+                                    <i class="fas fa-print me-1"></i>Publisher Management
+                                </asp:LinkButton>
+                                
+                                <asp:LinkButton class="btn btn-link text-light me-3" ID="LinkButton14" runat="server" OnClick="LinkButton14_Click" Visible="False">
+                                    <i class="fas fa-book me-1"></i>Book Inventory
+                                </asp:LinkButton>
+                                
+                                <asp:LinkButton class="btn btn-link text-light me-3" ID="LinkButton15" runat="server" OnClick="LinkButton15_Click" Visible="False">
+                                    <i class="fas fa-exchange-alt me-1"></i>Book Issuing
+                                </asp:LinkButton>
+                                
+                                <asp:LinkButton class="btn btn-link text-light me-3" ID="LinkButton16" runat="server" OnClick="LinkButton16_Click" Visible="False">
+                                    <i class="fas fa-users me-1"></i>Member Management
+                                </asp:LinkButton>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom bg-primary py-3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <p class="text-light mb-0">
+                                &copy; 2024 Digital Library. All Rights Reserved. 
+                                <a href="#" class="text-light text-decoration-underline" target="_blank">Privacy Policy</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </form>
+    
+    <!-- Carousel Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.querySelector('.carousel');
+            const navDotsContainer = document.querySelector('.carousel-nav');
+            const currentIndexElement = document.getElementById('current-index');
+            const prevButton = document.querySelector('.carousel-control.prev');
+            const nextButton = document.querySelector('.carousel-control.next');
+            
+            const imageCount = 10;
+            const visibleCount = 3;
+            let currentIndex = 0;
+            
+            // Generate image URLs (using placeholder images)
+            const imageUrls = [];
+            for (let i = 1; i <= imageCount; i++) {
+                imageUrls.push(`https://picsum.photos/400/500?random=${i}`);
+            }
+            
+            // Create carousel items
+            imageUrls.forEach((url, index) => {
+                const item = document.createElement('div');
+                item.className = 'carousel-item';
+                if (index < visibleCount) {
+                    item.classList.add(index === 1 ? 'center' : index === 0 ? 'left' : 'right');
+                } else {
+                    item.classList.add('hidden');
+                }
+                
+                const img = document.createElement('img');
+                img.src = url;
+                img.alt = `Image ${index + 1}`;
+                
+                item.appendChild(img);
+                carousel.appendChild(item);
+                
+                // Add click event to center the image
+                item.addEventListener('click', () => {
+                    if (!item.classList.contains('center')) {
+                        const clickedIndex = index;
+                        navigateTo(clickedIndex);
+                    }
+                });
+            });
+            
+            // Create navigation dots
+            for (let i = 0; i < imageCount; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'nav-dot';
+                if (i < visibleCount) {
+                    if (i === 1) dot.classList.add('active');
+                }
+                
+                dot.addEventListener('click', () => {
+                    navigateTo(i);
+                });
+                
+                navDotsContainer.appendChild(dot);
+            }
+            
+            // Update navigation dots
+            function updateDots() {
+                const dots = document.querySelectorAll('.nav-dot');
+                dots.forEach((dot, index) => {
+                    dot.classList.remove('active');
+                    
+                    // Calculate which images are visible
+                    const startIndex = currentIndex;
+                    const endIndex = (startIndex + visibleCount - 1) % imageCount;
+                    
+                    if (startIndex <= endIndex) {
+                        if (index >= startIndex && index <= endIndex) {
+                            dot.classList.add('active');
+                        }
+                    } else {
+                        if (index >= startIndex || index <= endIndex) {
+                            dot.classList.add('active');
+                        }
+                    }
+                });
+            }
+            
+            // Navigate to specific image
+            function navigateTo(index) {
+                currentIndex = index;
+                currentIndexElement.textContent = currentIndex + 1;
+                
+                const items = document.querySelectorAll('.carousel-item');
+                
+                // Hide all items first
+                items.forEach(item => {
+                    item.className = 'carousel-item hidden';
+                });
+                
+                // Show the visible items with proper positioning
+                for (let i = 0; i < visibleCount; i++) {
+                    const itemIndex = (currentIndex + i) % imageCount;
+                    const item = items[itemIndex];
+                    
+                    item.classList.remove('hidden');
+                    
+                    if (i === 0) {
+                        item.classList.add('left');
+                    } else if (i === 1) {
+                        item.classList.add('center');
+                    } else {
+                        item.classList.add('right');
+                    }
+                }
+                
+                updateDots();
+            }
+            
+            // Navigation event handlers
+            prevButton.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + imageCount) % imageCount;
+                navigateTo(currentIndex);
+            });
+            
+            nextButton.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % imageCount;
+                navigateTo(currentIndex);
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') {
+                    prevButton.click();
+                } else if (e.key === 'ArrowRight') {
+                    nextButton.click();
+                }
+            });
+            
+            // Swipe support for touch devices
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            carousel.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, false);
+            
+            carousel.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, false);
+            
+            function handleSwipe() {
+                const minSwipeDistance = 50;
+                
+                if (touchEndX < touchStartX && touchStartX - touchEndX > minSwipeDistance) {
+                    nextButton.click();
+                }
+                
+                if (touchEndX > touchStartX && touchEndX - touchStartX > minSwipeDistance) {
+                    prevButton.click();
+                }
+            }
+            
+            // Initialize carousel
+            navigateTo(0);
+        });
+    </script>
+</body>
+</html>
